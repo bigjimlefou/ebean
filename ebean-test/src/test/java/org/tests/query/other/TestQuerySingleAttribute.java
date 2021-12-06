@@ -719,7 +719,7 @@ public class TestQuerySingleAttribute extends BaseTestCase {
     }
     if (isSqlServer()) {
       assertThat(sqlOf(query)).endsWith(" fetch next 2 rows only");
-    } else if (isDb2()) {
+    } else if (isDb2() || isDb2ForI()) {
       assertSql(query).endsWith("FETCH FIRST 2 ROWS ONLY");
     } else if (isOracle()) {
       assertSql(query).contains(" offset 1 rows fetch next 2 rows only");

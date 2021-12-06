@@ -221,6 +221,17 @@
         </dependency>
       </dependencies>
     </profile>
+
+    <profile>
+      <id>db2fori</id>
+      <dependencies>
+        <dependency>
+          <groupId>net.sf.jt400</groupId>
+          <artifactId>jt400-jdk8</artifactId>
+          <version>10.7</version>
+        </dependency>
+      </dependencies>
+    </profile>
   </profiles>
 
   <build>

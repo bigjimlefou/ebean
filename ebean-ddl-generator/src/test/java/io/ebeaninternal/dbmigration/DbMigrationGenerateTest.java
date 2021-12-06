@@ -49,6 +49,7 @@ public class DbMigrationGenerateTest {
     // migration.addPlatform(Platform.GENERIC, "generic"); there is no ddl handler for generic
     // migration.addPlatform(Platform.SQLANYWHERE, "sqlanywhere"); and sqlanywhere
     migration.addPlatform(Platform.DB2);
+    migration.addPlatform(Platform.DB2FORI);
     migration.addPlatform(Platform.H2);
     migration.addPlatform(Platform.HSQLDB, "hsqldb");
     migration.addPlatform(Platform.MYSQL, "mysql");
