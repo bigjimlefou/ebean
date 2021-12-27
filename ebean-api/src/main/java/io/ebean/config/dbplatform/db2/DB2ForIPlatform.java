@@ -3,7 +3,11 @@ package io.ebean.config.dbplatform.db2;
 import io.ebean.BackgroundExecutor;
 import io.ebean.annotation.PersistBatch;
 import io.ebean.annotation.Platform;
-import io.ebean.config.dbplatform.*;
+import io.ebean.config.dbplatform.DatabasePlatform;
+import io.ebean.config.dbplatform.DbPlatformType;
+import io.ebean.config.dbplatform.DbType;
+import io.ebean.config.dbplatform.PlatformIdGenerator;
+import io.ebean.config.dbplatform.SqlErrorCodes;
 
 import javax.sql.DataSource;
 import java.sql.Types;
@@ -15,9 +19,11 @@ public class DB2ForIPlatform extends DatabasePlatform {
 
   public DB2ForIPlatform() {
     super();
-    this.platform = Platform.DB2FORI;
-    this.maxTableNameLength = 18;
-    this.maxConstraintNameLength = 18;
+    this.platform = Platform.DB2;
+    // Note: IBM i from 7.1 allow up to to 128
+    // TODO: Check if we need to introduce older platform (DB2ForI_6 ? but older documentation is not anymore published on ibm.com),
+    this.maxTableNameLength = 128;
+    this.maxConstraintNameLength = 128;
     this.truncateTable = "truncate table %s reuse storage ignore delete triggers immediate";
     this.sqlLimiter = new Db2SqlLimiter();
 
@@ -42,7 +48,6 @@ public class DB2ForIPlatform extends DatabasePlatform {
     dbTypeMap.put(DbType.REAL, new DbPlatformType("real"));
     dbTypeMap.put(DbType.DECIMAL, new DbPlatformType("decimal", 16, 3));
     persistBatchOnCascade = PersistBatch.NONE;
-
   }
 
   /**
