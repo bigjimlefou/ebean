@@ -646,7 +646,7 @@ public class TestQuerySingleAttribute extends BaseTestCase {
       .findSingleAttributeList();
     assertThat(list1.get(0)).isInstanceOf(CountedValue.class);
     //assertThat(list1.toString()).isEqualTo("[1: Tracy, 3: Jim1, 1: Jack, 3: Fred1, 1: Fiona, 3: Bugs1]");
-    
+
     query = DB.find(Contact.class).select("firstName");
     list1 = query
       .setCountDistinct(CountDistinctOrder.NO_ORDERING)
